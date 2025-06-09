@@ -49,12 +49,12 @@
 					<div class="form-row">
 						<div class="form-group">
 							<label class="form-label" for="name">Ваше имя</label>
-							<input name="name" type="text" id="name" class="form-input" placeholder="Ismingiz" required />
+							<input name="name" type="text" id="name" class="form-input nameInput" placeholder="Ismingiz" required />
 						</div>
 
 						<div class="form-group">
 							<label class="form-label" for="phone">Номер телефона</label>
-							<input type="tel" name="tel" id="phone" class="form-input" placeholder="+998" value="+998 " required />
+							<input type="tel" name="tel" id="phone " class="form-input phoneInput" placeholder="+998" value="+998 " required />
 						</div>
 					</div>
 
@@ -80,16 +80,10 @@
 			});
 		</script>
 
-		<!-- 1-sahifa: Ismingiz va telefon raqamingiz -->
-		<input type="text" id="nameInput" placeholder="Ismingiz" />
-		<input type="text" id="phoneInput" placeholder="+998" />
-
-		<button onclick="saveData()">Davom etish</button>
-
 		<script>
 			function saveData() {
-				const name = document.getElementById('nameInput').value;
-				const phone = document.getElementById('phoneInput').value;
+				const name = document.querySelector('nameInput').value;
+				const phone = document.querySelector('phoneInput').value;
 				localStorage.setItem('savedName', name);
 				localStorage.setItem('savedPhone', phone);
 				// Keyingi sahifaga o'tish
