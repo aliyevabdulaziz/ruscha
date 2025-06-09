@@ -674,11 +674,6 @@ body::before {
 		display: flex;
 	}
 
-	.hero-2,
-	.hero-container {
-		height: 600px;
-	}
-
 	.hero-2 {
 		padding: 40px 12px 56px;
 	}
