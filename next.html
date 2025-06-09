@@ -51,6 +51,19 @@
 
       <section class="pisma-section">
 				<div class="container">
+
+					<ul class="list" id="list">
+								<li class="item"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M18 18C22.1421 18 25.5 14.6421 25.5 10.5C25.5 6.35786 22.1421 3 18 3C13.8579 3 10.5 6.35786 10.5 10.5C10.5 14.6421 13.8579 18 18 18Z" fill="#1F94FF"/>
+<path d="M18 21.75C10.485 21.75 4.36499 26.79 4.36499 33C4.36499 33.42 4.69499 33.75 5.11499 33.75H30.885C31.305 33.75 31.635 33.42 31.635 33C31.635 26.79 25.515 21.75 18 21.75Z" fill="#1F94FF"/>
+</svg>Сотни студентов уже учатся в Италии, США и Европе с нашей помощью</li>
+								<li class="item"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M27.525 29.52C26.7 31.635 24.69 33 22.425 33H13.575C11.295 33 9.29997 31.635 8.47497 29.52C7.64997 27.39 8.21997 25.035 9.89997 23.505L15.975 18H20.04L26.1 23.505C27.78 25.035 28.335 27.39 27.525 29.52Z" fill="#1F94FF"/>
+<path d="M20.73 27.2099H15.27C14.7 27.2099 14.25 26.7449 14.25 26.1899C14.25 25.6199 14.715 25.1699 15.27 25.1699H20.73C21.3 25.1699 21.75 25.6349 21.75 26.1899C21.75 26.7449 21.285 27.2099 20.73 27.2099Z" fill="#1F94FF"/>
+<path d="M27.525 6.48C26.7 4.365 24.69 3 22.425 3H13.575C11.31 3 9.3 4.365 8.475 6.48C7.665 8.61 8.22 10.965 9.915 12.495L15.975 18H20.04L26.1 12.495C27.78 10.965 28.335 8.61 27.525 6.48ZM20.73 10.845H15.27C14.7 10.845 14.25 10.38 14.25 9.825C14.25 9.27 14.715 8.805 15.27 8.805H20.73C21.3 8.805 21.75 9.27 21.75 9.825C21.75 10.38 21.285 10.845 20.73 10.845Z" fill="#1F94FF"/>
+</svg>За 1 час: выбор университета, гранты, виза – полный план под ключ!</li>
+							</ul>
+
           <h2 class="pisma-title">
             Письма наших клиентов о <br />
 						<span>поступлении в университет</span>
@@ -105,6 +118,7 @@
 
         <div class="right-section">
             <form id="consultationForm">
+							<h2 class="title">Заполните заявку</h2>
                 <div class="form-block">
 									<div class="form-group">
                     <label class="form-label">Ваше имя</label>
@@ -135,7 +149,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn">
+                <button id="openModal" type="submit" class="submit-btn">
                     Забронировать консультацию за 9$
                 </button>
             </form>
@@ -143,6 +157,59 @@
 					</div>
 				</div>
 			</section>
+
+
+
+<!-- Payment Modal -->
+<div id="paymentModal" class="payment-modal-overlay">
+  <div class="payment-modal">
+    <span class="close-modal" id="closeModal">&times;</span>
+
+    <div class="modal-header">
+      <h2>Забронируйте консультацию <br><span>прямо сейчас!</span></h2>
+      <div class="modal-tags">
+        <span class="tag"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M17 7.75C16.81 7.75 16.62 7.68 16.47 7.53C16.18 7.24 16.18 6.76 16.47 6.47L18.52 4.42C16.76 2.92 14.49 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 9.51 21.08 7.24 19.58 5.48L17.53 7.53C17.38 7.68 17.19 7.75 17 7.75Z" fill="#1F94FF"/>
+<path d="M13.75 11.82L12.75 11.47V9.25H12.83C13.34 9.25 13.75 9.7 13.75 10.25C13.75 10.66 14.09 11 14.5 11C14.91 11 15.25 10.66 15.25 10.25C15.25 8.87 14.17 7.75 12.83 7.75H12.75V7.5C12.75 7.09 12.41 6.75 12 6.75C11.59 6.75 11.25 7.09 11.25 7.5V7.75H10.95C9.74001 7.75 8.75 8.77 8.75 10.03C8.75 11.49 9.6 11.96 10.25 12.19L11.25 12.54V14.76H11.17C10.66 14.76 10.25 14.31 10.25 13.76C10.25 13.35 9.91 13.01 9.5 13.01C9.09 13.01 8.75 13.35 8.75 13.76C8.75 15.14 9.83001 16.26 11.17 16.26H11.25V16.51C11.25 16.92 11.59 17.26 12 17.26C12.41 17.26 12.75 16.92 12.75 16.51V16.26H13.05C14.26 16.26 15.25 15.24 15.25 13.98C15.25 12.51 14.4 12.04 13.75 11.82ZM10.74 10.76C10.4 10.64 10.25 10.57 10.25 10.02C10.25 9.59 10.57 9.24 10.95 9.24H11.25V10.93L10.74 10.76ZM13.05 14.75H12.75V13.06L13.26 13.24C13.6 13.36 13.75 13.43 13.75 13.98C13.75 14.4 13.43 14.75 13.05 14.75Z" fill="#1F94FF"/>
+<path d="M22.69 1.71024C22.61 1.53024 22.47 1.38024 22.28 1.30024C22.19 1.26024 22.09 1.24023 21.99 1.24023H17.99C17.58 1.24023 17.24 1.58023 17.24 1.99023C17.24 2.40023 17.58 2.74023 17.99 2.74023H20.18L18.51 4.41024C18.89 4.74024 19.24 5.09024 19.57 5.47024L21.24 3.80024V6.00024C21.24 6.41024 21.58 6.75024 21.99 6.75024C22.4 6.75024 22.74 6.41024 22.74 6.00024V2.00024C22.75 1.90024 22.73 1.81024 22.69 1.71024Z" fill="#1F94FF"/>
+</svg> Платёж безопасен</span>
+        <span class="tag"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path opacity="0.4" d="M10.7499 2.44982C11.4499 1.85982 12.5799 1.85982 13.2599 2.44982L14.8399 3.79982C15.1399 4.04982 15.7099 4.25982 16.1099 4.25982H17.8099C18.8699 4.25982 19.7399 5.12982 19.7399 6.18982V7.88982C19.7399 8.28982 19.9499 8.84982 20.1999 9.14982L21.5499 10.7298C22.1399 11.4298 22.1399 12.5598 21.5499 13.2398L20.1999 14.8198C19.9499 15.1198 19.7399 15.6798 19.7399 16.0798V17.7798C19.7399 18.8398 18.8699 19.7098 17.8099 19.7098H16.1099C15.7099 19.7098 15.1499 19.9198 14.8499 20.1698L13.2699 21.5198C12.5699 22.1098 11.4399 22.1098 10.7599 21.5198L9.17988 20.1698C8.87988 19.9198 8.30988 19.7098 7.91988 19.7098H6.16988C5.10988 19.7098 4.23988 18.8398 4.23988 17.7798V16.0698C4.23988 15.6798 4.03988 15.1098 3.78988 14.8198L2.43988 13.2298C1.85988 12.5398 1.85988 11.4198 2.43988 10.7298L3.78988 9.13982C4.03988 8.83982 4.23988 8.27982 4.23988 7.88982V6.19982C4.23988 5.13982 5.10988 4.26982 6.16988 4.26982H7.89988C8.29988 4.26982 8.85988 4.05982 9.15988 3.80982L10.7499 2.44982Z" fill="#1F94FF"/>
+<path d="M12 16.8701C11.45 16.8701 11 16.4201 11 15.8701C11 15.3201 11.44 14.8701 12 14.8701C12.55 14.8701 13 15.3201 13 15.8701C13 16.4201 12.56 16.8701 12 16.8701Z" fill="#1F94FF"/>
+<path d="M12 13.7199C11.59 13.7199 11.25 13.3799 11.25 12.9699V8.12988C11.25 7.71988 11.59 7.37988 12 7.37988C12.41 7.37988 12.75 7.71988 12.75 8.12988V12.9599C12.75 13.3799 12.42 13.7199 12 13.7199Z" fill="#1F94FF"/>
+</svg> Места ограниченны!</span>
+      </div>
+    </div>
+
+    <p class="modal-text">Чтобы получить консультацию, оплатите 9$(115 000 сум) на одну из следующих карт и загрузите чек:</p>
+
+    <div class="card-inputs">
+      <label>Humo</label>
+      <input type="text" value="5614 6818 1353 7456" readonly class="copy-card">
+
+      <label>Visa</label>
+      <input type="text" value="5614 6818 1353 7456" readonly class="copy-card">
+    </div>
+
+    <div class="payment-info">
+      <strong class="price-title">Сумма оплаты: 9$</strong>
+      <p class="modal-text">Переведите 9$ на указанный номер карты и загрузите чек.</p>
+
+      <label class="upload-box">
+        <input type="file" accept=".pdf,.jpg,.png" hidden>
+        📎 Загрузить чек (PDF, JPG, PNG)
+      </label>
+
+      <button class="submit-btn">Отправить чек и подтвердить</button>
+    </div>
+
+    <div class="messenger-options">
+      <p>У вас всё ещё есть вопросы?</p>
+      <button class="telegram-btn">📩 Спросите через Telegram</button>
+      <button class="whatsapp-btn">💬 Спросите через WhatsApp</button>
+    </div>
+  </div>
+</div>
 
 	  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js"></script>
 	  <script>
@@ -179,7 +246,43 @@
       document.getElementById("phone").value = savedPhone;
     }
   });
+
+
+	document.getElementById('openModal').addEventListener('click', function (e) {
+	e.preventDefault(); // forma yuborilmasin
+	document.getElementById('paymentModal').style.display = 'flex';
+	document.querySelector('body').style.overflow='hidden'
+});
+
+document.getElementById('closeModal').addEventListener('click', function () {
+	document.getElementById('paymentModal').style.display = 'none';
+	document.querySelector('body').style.overflow='auto'
+
+});
+
+// Modalni tashqarisiga bosganda yopish
+window.addEventListener('click', function (e) {
+	const modal = document.getElementById('paymentModal');
+	if (e.target === modal) {
+		modal.style.display = 'none';
+	}
+});
 </script>
+
+<script>
+  document.querySelectorAll(".copy-card").forEach(input => {
+    input.addEventListener("click", function () {
+      navigator.clipboard.writeText(this.value).then(() => {
+        // ixtiyoriy: feedback berish
+        this.classList.add("copied");
+        setTimeout(() => this.classList.remove("copied"), 1000);
+      }).catch(err => {
+        console.error("Copy failed:", err);
+      });
+    });
+  });
+</script>
+
 
 
       <script src="main.js"></script>
