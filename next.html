@@ -122,12 +122,12 @@
                 <div class="form-block">
 									<div class="form-group">
                     <label class="form-label">Ваше имя</label>
-                    <input type="text"  class="form-input" value="Ibrohim" id="name" readonly>
+                    <input type="text"  class="form-input nameInput2" value="Ibrohim" id="name" readonly>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Номер телефона</label>
-                    <input type="tel" class="form-input js-input" value="+998 99 842 79 79" id="phone" readonly>
+                    <input type="tel" class="form-input js-input phoneInput2 " value="+998 99 842 79 79" id="phone" readonly>
                 </div>
 								</div>
 
@@ -346,16 +346,14 @@ window.addEventListener('click', function (e) {
 
 
 <!-- 2-sahifa: Ma'lumotlar avtomatik to'ldiriladi -->
-<input type="text" id="nameInput2" placeholder="Ismingiz">
-<input type="text" id="phoneInput2" placeholder="+998">
 
 <script>
 window.onload = function() {
     const savedName = localStorage.getItem("savedName");
     const savedPhone = localStorage.getItem("savedPhone");
 
-    if (savedName) document.getElementById("nameInput2").value = savedName;
-    if (savedPhone) document.getElementById("phoneInput2").value = savedPhone;
+    if (savedName) document.querySelector(".nameInput2").value = savedName;
+    if (savedPhone) document.querySelector(".phoneInput2").value = savedPhone;
 };
 </script>
 
