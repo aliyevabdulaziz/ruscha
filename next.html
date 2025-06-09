@@ -345,6 +345,21 @@ window.addEventListener('click', function (e) {
 </script>
 
 
+<!-- 2-sahifa: Ma'lumotlar avtomatik to'ldiriladi -->
+<input type="text" id="nameInput2" placeholder="Ismingiz">
+<input type="text" id="phoneInput2" placeholder="+998">
+
+<script>
+window.onload = function() {
+    const savedName = localStorage.getItem("savedName");
+    const savedPhone = localStorage.getItem("savedPhone");
+
+    if (savedName) document.getElementById("nameInput2").value = savedName;
+    if (savedPhone) document.getElementById("phoneInput2").value = savedPhone;
+};
+</script>
+
+
 
 
 
