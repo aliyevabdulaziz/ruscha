@@ -121,3 +121,46 @@ const input = document.querySelectorAll('.form-input');
 button.addEventListener('click', function () {
 	console.log('salom');
 });
+
+// Функция для открытия модального окна
+function openModal() {
+	const modal = document.getElementById('modal');
+	modal.style.display = 'block';
+	document.body.style.overflow = 'hidden';
+
+	// Отключаем прокрутку страницы
+}
+
+// Функция для закрытия модального окна
+function closeModal() {
+	const modal = document.getElementById('modal');
+	modal.style.display = 'none';
+	document.body.style.overflow = 'auto'; // Включаем прокрутку страницы
+}
+
+// Функция для перехода в Telegram
+function goToTelegram() {
+	// Замените на ваш Telegram username или ссылку
+	window.open('https://t.me/your_username', '_blank');
+}
+
+// Функция для перехода в WhatsApp
+function goToWhatsApp() {
+	// Замените на ваш номер WhatsApp
+	window.open('https://wa.me/your_phone_number', '_blank');
+}
+
+// Закрытие модального окна при клике вне его области
+window.onclick = function (event) {
+	const modal = document.getElementById('modal');
+	if (event.target === modal) {
+		closeModal();
+	}
+};
+
+// Закрытие модального окна при нажатии Escape
+document.addEventListener('keydown', function (event) {
+	if (event.key === 'Escape') {
+		closeModal();
+	}
+});
