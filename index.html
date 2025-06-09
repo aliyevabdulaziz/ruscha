@@ -89,26 +89,6 @@
 		</script>
 
 		<script>
-			document.querySelector('.cta-button').addEventListener('click', function (e) {
-				e.preventDefault();
-
-				const name = document.getElementById('name').value.trim();
-				const phone = document.getElementById('phone').value.trim();
-
-				// Oddiy validatsiya
-				if (name === '' || phone === '' || !phone.startsWith('+998') || phone.length < 13) {
-					alert('Iltimos, to‘g‘ri ism va telefon raqamini kiriting.');
-					return;
-				} else {
-					localStorage.setItem('userName', name);
-					localStorage.setItem('userPhone', phone);
-					window.location.href = 'next.html';
-				}
-
-				// Ma'lumotni Google Sheets ga yuborish
-			});
-
-			const button = document.querySelector('.cta-button');
 			document.getElementById('consultationForm').addEventListener('submit', function (e) {
 				e.preventDefault();
 
@@ -120,8 +100,9 @@
 					const originalText = button.innerHTML;
 
 					button.innerHTML = '<span class="play-icon">⏳</span> Отправка...';
-					button.disabled = true; // Redirect to next page after submission
-					// Redirect to next page
+					button.disabled = true;
+					button.setAttribute('href', 'next.html'); // Redirect to next page after submission
+					window.location.href = 'next.html'; // Redirect to next page
 					setTimeout(() => {
 						alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
 						button.innerHTML = originalText;
@@ -140,23 +121,43 @@
 				}
 			});
 
-			document.querySelector('.cta-button').addEventListener('click', function (e) {
-				e.preventDefault();
+			// Phone number formatting
+			document.getElementById('phone').addEventListener('input', function (e) {
+				let value = e.target.value;
 
-				const name = document.getElementById('name').value.trim();
-				const phone = document.getElementById('phone').value.trim();
-
-				// Oddiy validatsiya
-				if (name === '' || phone === '' || !phone.startsWith('+998') || phone.length < 13) {
-					alert('Iltimos, to‘g‘ri ism va telefon raqamini kiriting.');
-					return;
-				} else {
-					localStorage.setItem('userName', name);
-					localStorage.setItem('userPhone', phone);
-					window.location.href = 'next.html';
+				// Ensure the value always starts with +998
+				if (!value.startsWith('+998')) {
+					value = '+998 ' + value.replace('+998', '');
 				}
 
-				// Ma'lumotni Google Sheets ga yuborish
+				// Keep only the first +998 occurrence
+				const prefix = '+998 ';
+				const numberPart = value.substring(prefix.length).replace(/[^0-9]/g, '');
+
+				// Limit to 9 digits after +998
+				const limitedNumber = numberPart.substring(0, 9);
+
+				// Format as XX XXX XX XX after the +998 prefix
+				let formatted = prefix;
+				if (limitedNumber.length >= 1) {
+					formatted += limitedNumber.substring(0, 2);
+				}
+				if (limitedNumber.length >= 3) {
+					formatted += ' ' + limitedNumber.substring(2, 5);
+				}
+				if (limitedNumber.length >= 6) {
+					formatted += ' ' + limitedNumber.substring(5, 7);
+				}
+				if (limitedNumber.length >= 8) {
+					formatted += ' ' + limitedNumber.substring(7, 9);
+				}
+
+				e.target.value = formatted;
+			});
+
+			// Initialize phone input with +998 prefix
+			document.addEventListener('DOMContentLoaded', function () {
+				document.getElementById('phone').value = '+998 ';
 			});
 
 			document.getElementById('consultationForm').addEventListener('submit', function (e) {
@@ -170,8 +171,9 @@
 					const originalText = button.innerHTML;
 
 					button.innerHTML = '<span class="play-icon">⏳</span> Отправка...';
-					button.disabled = true; // Redirect to next page after submission
-					// Redirect to next page
+					button.disabled = true;
+					button.setAttribute('href', 'next.html'); // Redirect to next page after submission
+					window.location.href = 'next.html'; // Redirect to next page
 					setTimeout(() => {
 						alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
 						button.innerHTML = originalText;
@@ -191,83 +193,39 @@
 			});
 
 			// Phone number formatting
-			document.getElementById('phone').addEventListener('input', function (e) {
-				let value = e.target.value;
-
-				if (!value.startsWith('+998')) {
-					value = '+998 ' + value.replace(/[^0-9]/g, '');
-				}
-
-				const prefix = '+998 ';
-				const numberPart = value
-					.substring(prefix.length)
-					.replace(/[^0-9]/g, '')
-					.substring(0, 9);
-
-				let formatted = prefix;
-				if (numberPart.length >= 2) formatted += numberPart.substring(0, 2);
-				if (numberPart.length >= 5) formatted += ' ' + numberPart.substring(2, 5);
-				if (numberPart.length >= 7) formatted += ' ' + numberPart.substring(5, 7);
-				if (numberPart.length >= 9) formatted += ' ' + numberPart.substring(7, 9);
-
-				e.target.value = formatted;
-
-				// Kursorni oxiriga qo‘yish
-				setTimeout(() => {
-					e.target.setSelectionRange(e.target.value.length, e.target.value.length);
-				}, 0);
-			});
-
-			document.addEventListener('DOMContentLoaded', function () {
-				const phoneInput = document.getElementById('phone');
-				if (phoneInput && phoneInput.value.trim() === '') {
-					phoneInput.value = '+998 ';
-				}
-			});
-			document.getElementById('phone').addEventListener('focus', function () {
-				if (!this.value.startsWith('+998')) {
-					this.value = '+998 ';
-				}
-			});
-
 			document.getElementById('phone1').addEventListener('input', function (e) {
 				let value = e.target.value;
 
+				// Ensure the value always starts with +998
 				if (!value.startsWith('+998')) {
-					value = '+998 ' + value.replace(/[^0-9]/g, '');
+					value = '+998 ' + value.replace('+998', '');
 				}
 
+				// Keep only the first +998 occurrence
 				const prefix = '+998 ';
-				const numberPart = value
-					.substring(prefix.length)
-					.replace(/[^0-9]/g, '')
-					.substring(0, 9);
+				const numberPart = value.substring(prefix.length).replace(/[^0-9]/g, '');
 
+				// Limit to 9 digits after +998
+				const limitedNumber = numberPart.substring(0, 9);
+
+				// Format as XX XXX XX XX after the +998 prefix
 				let formatted = prefix;
-				if (numberPart.length >= 2) formatted += numberPart.substring(0, 2);
-				if (numberPart.length >= 5) formatted += ' ' + numberPart.substring(2, 5);
-				if (numberPart.length >= 7) formatted += ' ' + numberPart.substring(5, 7);
-				if (numberPart.length >= 9) formatted += ' ' + numberPart.substring(7, 9);
+				if (limitedNumber.length >= 1) {
+					formatted += limitedNumber.substring(0, 2);
+				}
+				if (limitedNumber.length >= 3) {
+					formatted += ' ' + limitedNumber.substring(2, 5);
+				}
+				if (limitedNumber.length >= 6) {
+					formatted += ' ' + limitedNumber.substring(5, 7);
+				}
+				if (limitedNumber.length >= 8) {
+					formatted += ' ' + limitedNumber.substring(7, 9);
+				}
 
 				e.target.value = formatted;
-
-				// Kursorni oxiriga qo‘yish
-				setTimeout(() => {
-					e.target.setSelectionRange(e.target.value.length, e.target.value.length);
-				}, 0);
 			});
 
-			document.addEventListener('DOMContentLoaded', function () {
-				const phoneInput = document.getElementById('phone1');
-				if (phoneInput && phoneInput.value.trim() === '') {
-					phoneInput.value = '+998 ';
-				}
-			});
-			document.getElementById('phone1').addEventListener('focus', function () {
-				if (!this.value.startsWith('+998')) {
-					this.value = '+998 ';
-				}
-			});
 			// Initialize phone input with +998 prefix
 			document.addEventListener('DOMContentLoaded', function () {
 				document.getElementById('phone1').value = '+998 ';
