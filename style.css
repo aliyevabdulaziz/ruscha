@@ -322,6 +322,11 @@ body::before {
 	color: white;
 	text-align: center;
 	padding: 16px;
+	background: linear-gradient(#fff, #fff), /* ichki fon */ linear-gradient(90deg, #1f94ff 0%, #e84bc1 100%); /* border gradient */
+	background-origin: border-box;
+	background-clip: padding-box, border-box;
+	border: 2px solid transparent;
+	border-radius: 12px;
 }
 
 .discount-text {
@@ -475,6 +480,14 @@ body::before {
 	font-size: 16px;
 	line-height: 1;
 }
+
+.title {
+	display: none;
+}
+
+#list {
+	display: none;
+}
 @media (max-width: 968px) {
 	.hero-section {
 		padding: 4rem 3rem;
@@ -625,8 +638,7 @@ body::before {
 	}
 	.form-input {
 		padding: 9px 12px;
-		font-size: 16px;
-		background: var(--white);
+		font-size: 14px;
 	}
 
 	.cta-button {
@@ -689,6 +701,61 @@ body::before {
 	.plan-text {
 		font-size: 16px;
 	}
+
+	.left-section,
+	.right-section {
+		padding: 16px;
+	}
+
+	.plan-form {
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.discount-text {
+		font-size: 16px;
+		margin-bottom: 8px;
+	}
+
+	.timer {
+		padding: 16px;
+		font-size: 20px;
+	}
+
+	#list {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	.item {
+		padding: 16px;
+	}
+
+	.list {
+		display: none;
+	}
+
+	.title {
+		display: flex;
+		font-weight: 700;
+		font-size: 20px;
+		margin-left: -10px;
+		margin-bottom: 12px;
+	}
+
+	.form-block {
+		flex-direction: column;
+		margin-bottom: 16px;
+	}
+
+	.radio-label {
+		font-size: 14px;
+	}
+
+	.submit-btn {
+		margin-top: 0;
+	}
 }
 
 @media (max-width: 600px) {
@@ -733,5 +800,166 @@ body::before {
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+/* Overlay */
+.payment-modal-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	z-index: 9999;
+	padding: 20px;
+	overflow: auto;
+}
+
+/* Modal */
+.payment-modal {
+	background: #fff;
+	max-width: 615px;
+	width: 100%;
+	border-radius: 20px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+	padding: 24px;
+	position: relative;
+	margin-top: 400px;
+}
+
+/* Close icon */
+.close-modal {
+	position: absolute;
+	top: 10px;
+	right: 18px;
+	font-size: 24px;
+	color: #aaa;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.modal-header h2 {
+	font-size: 24px;
+	margin-bottom: 24px;
+	line-height: 1;
+}
+.modal-header span {
+	color: #0070f3;
+}
+
+.modal-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+.tag {
+	color: #0070f3;
+	font-size: 20px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 9px;
+	margin-bottom: 32px;
+}
+
+.modal-text {
+	font-size: 16px;
+	margin-bottom: 24px;
+}
+
+.card-inputs label {
+	margin-bottom: 8px;
+	font-weight: 600;
+	display: block;
+}
+.card-inputs input {
+	width: 100%;
+	padding: 11px;
+	font-size: 16px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background: #f9f9f9;
+}
+
+.price-title {
+	display: block;
+	margin-top: 16px;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.upload-box {
+	display: block;
+	margin-top: 16px;
+	border: 2px dashed #0070f3;
+	padding: 12px;
+	text-align: center;
+	color: #0070f3;
+	border-radius: 10px;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.submit-btn {
+	width: 100%;
+	padding: 12px;
+	background: #0070f3;
+	color: #fff;
+	font-size: 15px;
+	border: none;
+	border-radius: 10px;
+	margin-top: 16px;
+	cursor: pointer;
+	transition: background 0.3s;
+}
+.submit-btn:hover {
+	background: #005ad1;
+}
+
+.messenger-options {
+	text-align: center;
+	margin-top: 24px;
+}
+.messenger-options p {
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.telegram-btn,
+.whatsapp-btn {
+	width: 100%;
+	margin-top: 10px;
+	padding: 10px;
+	font-size: 14px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	color: white;
+}
+.telegram-btn {
+	background: #229ed9;
+}
+.whatsapp-btn {
+	background: #25d366;
+}
+
+@media (max-width: 500px) {
+	.payment-modal {
+		padding: 20px;
+	}
+	.modal-header h2 {
+		font-size: 18px;
+	}
+	.upload-box {
+		font-size: 13px;
+		padding: 10px;
+	}
+	.submit-btn {
+		font-size: 14px;
 	}
 }
