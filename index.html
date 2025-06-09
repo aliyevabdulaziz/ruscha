@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Учитесь в топовых университетах мира без стресса</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container hero-container">
+			<section class="hero-section">
+				<div class="hero-content">
+					<h1 class="hero-title">Учитесь в топовых университетах мира без стресса!"</h1>
+					<p class="hero-subtitle">Сайдкарим помог десяткам студентов поступить в Италию, США и Европу. Ваша очередь!</p>
+
+					<div class="form-container">
+						<form name="submit-to-google-sheet" id="consultationForm">
+							<div class="form-row">
+								<div class="form-group">
+									<label class="form-label" for="name">Ваше имя</label>
+									<input name="name" type="text" id="name" class="form-input" placeholder="Ismingiz" required />
+								</div>
+
+								<div class="form-group">
+									<label class="form-label" for="phone">Номер телефона</label>
+									<input type="tel" name="tel" id="phone" class="form-input" placeholder="+998" value="+998 " required />
+								</div>
+							</div>
+
+							<a href="next.html" type="submit" class="cta-button">
+								<img src="img/play.svg" alt="icon" />
+								Посмотреть видео
+							</a>
+						</form>
+					</div>
+				</div>
+
+				<div class="hero-image">
+					<div class="consultant-image">
+						<div class="consultant-photo"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div class="container">
+			<div class="form-container flex">
+				<form name="submit-to-google-sheet" id="consultationForm">
+					<div class="form-row">
+						<div class="form-group">
+							<label class="form-label" for="name">Ваше имя</label>
+							<input name="name" type="text" id="name" class="form-input" placeholder="Ismingiz" required />
+						</div>
+
+						<div class="form-group">
+							<label class="form-label" for="phone">Номер телефона</label>
+							<input type="tel" name="tel" id="phone" class="form-input" placeholder="+998" value="+998 " required />
+						</div>
+					</div>
+
+					<button type="submit" class="cta-button">
+						<img src="img/play.svg" alt="" />
+						Посмотреть видео
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<script src="main.js" defer></script>
+
+		<script>
+			const scriptURL = '';
+			const form = document.forms['submit-to-google-sheet'];
+
+			form.addEventListener('submit', e => {
+				e.preventDefault()
+					.fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+					.then(response => console.log('Success!', response))
+					.catch(error => console.error('Error!', error.message));
+			});
+		</script>
+
+		<script>
+			document.querySelector('.cta-button').addEventListener('click', function (e) {
+				e.preventDefault();
+
+				const name = document.getElementById('name').value.trim();
+				const phone = document.getElementById('phone').value.trim();
+
+				// Oddiy validatsiya
+				if (name === '' || phone === '' || !phone.startsWith('+998') || phone.length < 13) {
+					alert('Iltimos, to‘g‘ri ism va telefon raqamini kiriting.');
+					return;
+				} else {
+					localStorage.setItem('userName', name);
+					localStorage.setItem('userPhone', phone);
+					window.location.href = 'next.html';
+				}
+
+				// Ma'lumotni Google Sheets ga yuborish
+			});
+		</script>
+	</body>
+</html>
