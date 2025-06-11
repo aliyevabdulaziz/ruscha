@@ -770,6 +770,10 @@ body::before {
 	form {
 		width: 100%;
 	}
+
+	.form-container{
+		bottom: -380px;
+	}
 }
 
 @media (max-width: 480px) {

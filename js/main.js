@@ -31,38 +31,6 @@
 // };
 
 // Phone number formatting
-document.getElementById('phone').addEventListener('input', function (e) {
-	let value = e.target.value;
-
-	// Ensure the value always starts with +998
-	if (!value.startsWith('+998')) {
-		value = '+998 ' + value.replace('+998', '');
-	}
-
-	// Keep only the first +998 occurrence
-	const prefix = '+998 ';
-	const numberPart = value.substring(prefix.length).replace(/[^0-9]/g, '');
-
-	// Limit to 9 digits after +998
-	const limitedNumber = numberPart.substring(0, 9);
-
-	// Format as XX XXX XX XX after the +998 prefix
-	let formatted = prefix;
-	if (limitedNumber.length >= 1) {
-		formatted += limitedNumber.substring(0, 2);
-	}
-	if (limitedNumber.length >= 3) {
-		formatted += ' ' + limitedNumber.substring(2, 5);
-	}
-	if (limitedNumber.length >= 6) {
-		formatted += ' ' + limitedNumber.substring(5, 7);
-	}
-	if (limitedNumber.length >= 8) {
-		formatted += ' ' + limitedNumber.substring(7, 9);
-	}
-
-	e.target.value = formatted;
-});
 
 // Initialize phone input with +998 prefix
 document.addEventListener('DOMContentLoaded', function () {
@@ -157,4 +125,37 @@ document.addEventListener('keydown', function (event) {
 	if (event.key === 'Escape') {
 		closeModal();
 	}
+});
+
+document.getElementById('phone').addEventListener('input', function (e) {
+	let value = e.target.value;
+
+	// Ensure the value always starts with +998
+	if (!value.startsWith('+998')) {
+		value = '+998 ' + value.replace('+998', '');
+	}
+
+	// Keep only the first +998 occurrence
+	const prefix = '+998 ';
+	const numberPart = value.substring(prefix.length).replace(/[^0-9]/g, '');
+
+	// Limit to 9 digits after +998
+	const limitedNumber = numberPart.substring(0, 9);
+
+	// Format as XX XXX XX XX after the +998 prefix
+	let formatted = prefix;
+	if (limitedNumber.length >= 1) {
+		formatted += limitedNumber.substring(0, 2);
+	}
+	if (limitedNumber.length >= 3) {
+		formatted += ' ' + limitedNumber.substring(2, 5);
+	}
+	if (limitedNumber.length >= 6) {
+		formatted += ' ' + limitedNumber.substring(5, 7);
+	}
+	if (limitedNumber.length >= 8) {
+		formatted += ' ' + limitedNumber.substring(7, 9);
+	}
+
+	e.target.value = formatted;
 });
