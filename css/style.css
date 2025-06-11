@@ -57,7 +57,6 @@ body::before {
 	background: var(--primary-blue);
 	border-radius: var(--border-radius-large);
 	box-shadow: var(--shadow-medium);
-	overflow: hidden;
 	background-image: url(img/Vector.png);
 	background-repeat: no-repeat;
 	background-position: right center;
@@ -576,6 +575,7 @@ body::before {
 		padding: 2.5rem 1.25rem 10rem;
 		gap: 3rem;
 		justify-content: center;
+		position: relative;
 	}
 
 	.hero-content {
@@ -604,7 +604,11 @@ body::before {
 	}
 
 	.form-container {
-		display: none;
+		position: absolute;
+		bottom: -300px;
+		width: 100%;
+		left: 0;
+		margin-bottom: 50px;
 	}
 	.flex {
 		display: inline-flex;
@@ -636,7 +640,7 @@ body::before {
 	.form-input {
 		padding: 9px 12px;
 		font-size: 14px;
-		background: #fff;
+		background: #dddddd47;
 	}
 
 	.cta-button {

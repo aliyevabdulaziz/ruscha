@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Учитесь в топовых университетах мира без стресса</title>
-		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="css/style.css" />
 	</head>
 	<body>
 		<div class="container hero-container">
@@ -27,10 +27,10 @@
 								</div>
 							</div>
 
-							<a href="next.html" type="submit" class="cta-button">
+							<button onclick="saveUserData()" type="submit" class="cta-button">
 								<img src="img/play.svg" alt="icon" />
 								Посмотреть видео
-							</a>
+							</button>
 						</form>
 					</div>
 				</div>
@@ -43,30 +43,7 @@
 			</section>
 		</div>
 
-		<div class="container">
-			<div class="form-container flex">
-				<form name="submit-to-google-sheet" id="consultationForm">
-					<div class="form-row">
-						<div class="form-group">
-							<label class="form-label" for="name">Ваше имя</label>
-							<input name="name" type="text" id="name" class="form-input nameInput" placeholder="Ismingiz" required />
-						</div>
-
-						<div class="form-group">
-							<label class="form-label" for="phone1">Номер телефона</label>
-							<input type="tel" name="tel" id="phone1 " class="form-input phoneInput" placeholder="+998" value="+998 " required />
-						</div>
-					</div>
-
-					<a href="next.html" type="submit" class="cta-button">
-						<img src="img/play.svg" alt="" />
-						Посмотреть видео
-					</a>
-				</form>
-			</div>
-		</div>
-
-		<script src="main.js" defer></script>
+		<script src="js/main.js" defer></script>
 
 		<script>
 			const scriptURL = '';
@@ -85,7 +62,9 @@
 				e.preventDefault();
 
 				const name = document.getElementById('name').value.trim();
-				const phone = document.getElementById('phone1').value.trim();
+				const phone = document.getElementById('phone').value.trim();
+				const button = document.querySelector('.cta-button');
+				console.log(button);
 
 				if (name && phone) {
 					// Simulate form submission
@@ -100,7 +79,7 @@
 						button.innerHTML = originalText;
 						button.disabled = false;
 						this.reset();
-						document.getElementById('phone1').value = '+998 ';
+						document.getElementById('phone').value = '+998 ';
 						// localStorage orqali saqlash
 						localStorage.setItem('userName', name);
 						localStorage.setItem('userPhone', phone);
@@ -114,7 +93,7 @@
 			});
 
 			// Phone number formatting
-			document.getElementById('phone1').addEventListener('input', function (e) {
+			document.getElementById('phone').addEventListener('input', function (e) {
 				let value = e.target.value;
 
 				// Ensure the value always starts with +998
@@ -149,8 +128,20 @@
 
 			// Initialize phone input with +998 prefix
 			document.addEventListener('DOMContentLoaded', function () {
-				document.getElementById('phone1').value = '+998 ';
+				document.getElementById('phone').value = '+998 ';
 			}); // bu yerga ikkinchi sahifa URL sini yozing
+		</script>
+
+		<script>
+			function saveUserData() {
+				const name = document.getElementById('name').value;
+				const phone = document.getElementById('phone').value;
+
+				localStorage.setItem('userName', name);
+				localStorage.setItem('userPhone', phone);
+
+				window.location.href = 'next.html';
+			}
 		</script>
 	</body>
 </html>

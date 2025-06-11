@@ -1,35 +1,34 @@
-const button = document.querySelector('.cta-button');
-document.getElementById('consultationForm').addEventListener('submit', function (e) {
-	e.preventDefault();
+// const button = document.querySelector('.cta-button');
+// document.getElementById('consultationForm').addEventListener('submit', function (e) {
+// 	e.preventDefault();
 
-	const name = document.getElementById('name').value.trim();
-	const phone = document.getElementById('phone').value.trim();
+// 	const name = document.getElementById('name').value.trim();
+// 	const phone = document.getElementById('phone').value.trim();
 
-	if (name && phone) {
-		// Simulate form submission
-		const originalText = button.innerHTML;
+// function saveUserData() {
+// 	const name = document.getElementById('name').value;
+// 	const phone = document.getElementById('phone').value;
 
-		button.innerHTML = '<span class="play-icon">⏳</span> Отправка...';
-		button.disabled = true;
-		button.setAttribute('href', 'next.html'); // Redirect to next page after submission
-		window.location.href = 'next.html'; // Redirect to next page
-		setTimeout(() => {
-			alert(`Спасибо, ${name}! Мы свяжемся с вами по номеру ${phone} в ближайшее время.`);
-			button.innerHTML = originalText;
-			button.disabled = false;
-			this.reset();
-			document.getElementById('phone').value = '+998 ';
-			// localStorage orqali saqlash
-			localStorage.setItem('userName', name);
-			localStorage.setItem('userPhone', phone);
+// 	localStorage.setItem('userName', name);
+// 	localStorage.setItem('userPhone', phone);
 
-			// keyingi sahifaga o'tish
-			window.location.href = 'next.html';
-		}, 2000);
-	} else {
-		alert('Пожалуйста, заполните все поля');
-	}
-});
+// 	// Sahifa o'zgarishini shu yerda yozing
+// 	window.location.href = 'next.html'; // o'z sahifa nomingizni kiriting
+// }
+
+
+// window.onload = function () {
+// 	const name = localStorage.getItem('userName');
+// 	const phone = localStorage.getItem('userPhone');
+
+// 	if (name) {
+// 		document.getElementById('nameInput2').value = name;
+// 	}
+
+// 	if (phone) {
+// 		document.getElementById('phoneInput2').value = phone;
+// 	}
+// };
 
 // Phone number formatting
 document.getElementById('phone').addEventListener('input', function (e) {
@@ -118,9 +117,6 @@ radioItems.forEach(item => {
 const input = document.querySelectorAll('.form-input');
 
 // Form submission
-button.addEventListener('click', function () {
-	console.log('salom');
-});
 
 // Функция для открытия модального окна
 function openModal() {
