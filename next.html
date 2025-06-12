@@ -117,17 +117,17 @@
 
 
         <div class="right-section">
-            <form id="consultationForm">
-							<h2 class="title">Заполните заявку</h2>
+          <h2 class="title">Заполните заявку</h2>
+            <form id="consultationForm" name="form-2">
                 <div class="form-block">
 									<div class="form-group">
                     <label class="form-label">Ваше имя</label>
-                    <input type="text"  class="form-input nameInput2" value="" id="nameInput2" readonly>
+                    <input type="text" name="name"  class="form-input nameInput2" value="" id="nameInput2" readonly>
                 </div>
 
                 <div class="form-group">
                     <label class="form-label">Номер телефона</label>
-                    <input type="tel" class="form-input js-input phoneInput2 " value="+998" id="phoneInput2" readonly>
+                    <input type="tel" name="phone" class="form-input js-input phoneInput2 " value="+998" id="phoneInput2" readonly>
                 </div>
 								</div>
 
@@ -135,21 +135,21 @@
                     <label class="form-label">Куда хотите поступить?</label>
                     <div class="radio-group">
                         <div class="radio-item selected" data-value="america">
-                            <div class="radio-input checked"></div>
-                            <label class="radio-label">Америка</label>
+                            <input type="radio" name="courty" id="courty1" class="radio-input checked" value="america"  checked>
+                            <label class="radio-label" for="courty1">Америка</label>
                         </div>
                         <div class="radio-item" data-value="europe">
-                            <div class="radio-input"></div>
-                            <label class="radio-label">Европа</label>
+                            <input type="radio" name="courty" id="courty2" value="europe" class="radio-input">
+                            <label class="radio-label" for="courty2">Европа</label>
                         </div>
                         <div class="radio-item" data-value="other">
-                            <div class="radio-input"></div>
-                            <label class="radio-label">Другое</label>
+                            <input type="radio" id="courty" name="courty" class="radio-input" value="other">
+                            <label class="radio-label" for="courty">Другое</label>
                         </div>
                     </div>
                 </div>
 
-                <button id="openModal" type="submit" class="submit-btn">
+                <button type="submit" id="openModal"  class="submit-btn">
                     Забронировать консультацию за 9$
                 </button>
             </form>
@@ -202,22 +202,27 @@
 </div>
 
 
-    <div class="payment-info">
-      <strong class="price-title">Сумма оплаты: 9$</strong>
-      <p class="modal-text">Переведите 9$ на указанный номер карты и загрузите чек.</p>
+<form id="checkForm">
+  <div class="payment-info">
+    <strong class="price-title">Сумма оплаты: 9$</strong>
+    <p class="modal-text">Переведите 9$ на указанный номер карты и загрузите чек.</p>
 
-      <label class="upload-box">
-        <input type="file" accept=".pdf,.jpg,.png" hidden>
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <label class="upload-box">
+      <input type="file" name="check" id="fileInput" accept=".pdf,.jpg,.png" hidden>
+      <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.5 17V11L7.5 13" stroke="#1F94FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M9.5 11L11.5 13" stroke="#1F94FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M22.5 10V15C22.5 20 20.5 22 15.5 22H9.5C4.5 22 2.5 20 2.5 15V9C2.5 4 4.5 2 9.5 2H14.5" stroke="#1F94FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M22.5 10H18.5C15.5 10 14.5 9 14.5 6V2L22.5 10Z" stroke="#1F94FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg> <br> Загрузить чек (PDF, JPG, PNG)
-      </label>
+</svg>
 
-      <button class="submit-btn" onclick="openModal()">Отправить чек и подтвердить</button>
-    </div>
+      <br> Загрузить чек (PDF, JPG, PNG)
+    </label>
+
+    <button class="submit-btn" id="uploadBtn" type="submit">Отправить чек и подтвердить
+    </button>
+  </div>
+</form>
 
     <div class="messenger-options">
       <p>У вас всё ещё есть вопросы?</p>
@@ -294,6 +299,101 @@
 });
 	  </script>
 
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby63pGRPbYRUJcCnmozK9gp6gPS9eDrk4FyuwdvTvryYSiRuaKIKqS6IVs48Z7LaxJO/exec'
+  const form = document.forms['form-2']
+const submitBtn = document.querySelector('.submit-btn');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+
+  // ⏳ Tugmani o‘zgartiramiz va bloklaymiz
+  submitBtn.innerHTML = '<span class="play-icon spinning-icon">⏳</span> Отправка...';
+  submitBtn.disabled = true;
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then(response => {
+      console.log('Success!', response);
+
+      form.reset();
+
+      document.getElementById('paymentModal').style.display = 'flex';
+      document.querySelector('body').style.overflow = '';
+
+      submitBtn.innerHTML = '<span class="play-icon">🚀</span> Отправить';
+      submitBtn.disabled = false;
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+
+      submitBtn.innerHTML = '<span class="play-icon">🚀</span> Отправить';
+      submitBtn.disabled = false;
+    });
+});
+
+
+
+
+
+
+
+  const form3 = document.getElementById('checkForm');
+  const fileInput = document.getElementById('fileInput');
+  const uploadBtn = document.getElementById('uploadBtn');
+
+  const scriptURL1 = 'https://script.google.com/macros/s/AKfycbw3GI0B72lyGoq-ePX-5mlRghCBAYQNOn9aQ1XhJc8RVn0XAGBu-_u8Ad9JsTbl2t0-6g/exec'; // Apps Script Web App URL
+
+  form3.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const file = fileInput.files[0];
+    if (!file) {
+      alert('Iltimos, fayl yuklang.');
+      return;
+    }
+
+    // Button animatsiya
+    uploadBtn.innerHTML = '<span class="play-icon spinning-icon">⏳</span> Отправка...';
+    uploadBtn.disabled = true;
+
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      const base64String = reader.result.split(',')[1];
+
+      const formData = new FormData();
+      formData.append('file', base64String);
+      formData.append('filename', file.name);
+
+      fetch(scriptURL1, {
+        method: 'POST',
+        body: formData
+      })
+      .then(res => res.text())
+      .then(result => {
+        uploadBtn.innerHTML = '<span class="play-icon">🚀</span> Отправить чек и подтвердить';
+        uploadBtn.disabled = false;
+
+        // MODAL ochish
+        openModal(); // Agar sizda bu funksiya mavjud bo‘lsa
+      })
+      .catch(error => {
+        alert('Xatolik yuz berdi!');
+        console.error(error);
+        uploadBtn.innerHTML = '<span class="play-icon">🚀</span> Отправить чек и подтвердить';
+        uploadBtn.disabled = false;
+      });
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+
+
+
+
+
+</script>
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     const savedName = localStorage.getItem("userName");
@@ -309,17 +409,17 @@
   });
 
 
-	document.getElementById('openModal').addEventListener('click', function (e) {
-	e.preventDefault(); // forma yuborilmasin
-	document.getElementById('paymentModal').style.display = 'flex';
-	document.querySelector('body').style.overflow='hidden'
-});
+// 	document.getElementById('openModal').addEventListener('click', function (e) {
+// 	e.preventDefault(); // forma yuborilmasin
+// 	document.getElementById('paymentModal').style.display = 'flex';
+// 	document.querySelector('body').style.overflow=''
+// });
 
-document.getElementById('closeModal').addEventListener('click', function () {
-	document.getElementById('paymentModal').style.display = 'none';
-	document.querySelector('body').style.overflow='auto'
+// document.getElementById('closeModal').addEventListener('click', function () {
+// 	document.getElementById('paymentModal').style.display = 'none';
+// 	document.querySelector('body').style.overflow='auto';
 
-});
+// });
 
 // Modalni tashqarisiga bosganda yopish
 window.addEventListener('click', function (e) {

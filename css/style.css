@@ -421,7 +421,9 @@ body::before {
 	cursor: pointer;
 }
 
-.radio-input.checked {
+
+
+.radio-input .checked {
 	border-color: #ffffff;
 	background-color: #1f94ff;
 }
@@ -436,11 +438,13 @@ body::before {
 	height: 8px;
 	background: white;
 	border-radius: 50%;
+	border:3px solid #1f94ff;
 }
 
 .radio-label {
 	font-size: 16px;
 	cursor: pointer;
+	width: 100%;
 }
 
 .submit-btn {
@@ -455,6 +459,10 @@ body::before {
 	cursor: pointer;
 	transition: transform 0.2s;
 	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 }
 
 .submit-btn:hover {
@@ -1194,3 +1202,24 @@ body::before {
 		align-items: center;
 	}
 }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .spinning-icon {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+  }
+
+
+	
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .spinning-icon {
+    display: inline-block;
+    animation: spin 1s linear infinite;
+  }
