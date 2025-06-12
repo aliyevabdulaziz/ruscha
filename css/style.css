@@ -57,7 +57,7 @@ body::before {
 	background: var(--primary-blue);
 	border-radius: var(--border-radius-large);
 	box-shadow: var(--shadow-medium);
-	background-image: url(img/Vector.png);
+	background-image: url(../img/Vector.png);
 	background-repeat: no-repeat;
 	background-position: right center;
 }
@@ -565,7 +565,7 @@ body::before {
 @media (max-width: 768px) {
 	.hero-container {
 		margin-bottom: 20px;
-		background-image: url(img/Vector-1.png);
+		background-image: url(../img/Vector-1.png);
 		background-position: center bottom;
 		background-size: contain;
 		max-width: 600px;

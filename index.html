@@ -13,31 +13,31 @@
 					<h1 class="hero-title">Учитесь в топовых университетах мира без стресса!"</h1>
 					<p class="hero-subtitle">Сайдкарим помог десяткам студентов поступить в Италию, США и Европу. Ваша очередь!</p>
 
-					<div class="form-container">
-						<form name="submit-to-google-sheet" id="consultationForm">
-							<div class="form-row">
-								<div class="form-group">
-									<label class="form-label" for="name">Ваше имя</label>
-									<input name="name" type="text" id="name" class="form-input" placeholder="Ismingiz" required />
-								</div>
-
-								<div class="form-group">
-									<label class="form-label" for="phone">Номер телефона</label>
-									<input type="tel" name="tel" id="phone" class="form-input" placeholder="+998" value="+998 " required />
-								</div>
+					<form class="form-container" name="asoschilar" id="consultationForm">
+						<div class="form-row">
+							<div class="form-group">
+								<label class="form-label" for="name">Ваше имя</label>
+								<input name="name" id="name" type="text" placeholder="ism" class="form-input" required />
 							</div>
 
-							<button onclick="saveUserData()" type="submit" class="cta-button">
-								<img src="img/play.svg" alt="icon" />
-								Посмотреть видео
-							</button>
-						</form>
-					</div>
+							<div class="form-group">
+								<label class="form-label" for="phone">Номер телефона</label>
+								<input type="tel" name="phone" id="phone" class="form-input" placeholder="+998" value="+998 " required />
+							</div>
+						</div>
+
+						<button type="submit" onclick="saveUserData()" class="cta-button">
+							<img src="img/play.svg" alt="icon" />
+							Посмотреть видео
+						</button>
+					</form>
 				</div>
 
 				<div class="hero-image">
 					<div class="consultant-image">
-						<div class="consultant-photo"></div>
+						<div class="consultant-photo">
+							<img src="img/aka.png" alt="img" />
+						</div>
 					</div>
 				</div>
 			</section>
@@ -46,12 +46,13 @@
 		<script src="js/main.js" defer></script>
 
 		<script>
-			const scriptURL = '';
-			const form = document.forms['submit-to-google-sheet'];
+			const scriptURL =
+				'https://script.google.com/macros/s/AKfycbxHcQk04aWG8ofvXeMXZHQsh26ZN0S5nkitherm1SIVSyRh9ugU6nD5e1ipbwSeHpaqsA/exec';
+			const form = document.forms['asoschilar'];
 
-			form.addEventListener('submit', e => {
-				e.preventDefault()
-					.fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+						form.addEventListener('submit', e => {
+				e.preventDefault();
+				fetch(scriptURL, { method: 'POST', body: new FormData(form) })
 					.then(response => console.log('Success!', response))
 					.catch(error => console.error('Error!', error.message));
 			});

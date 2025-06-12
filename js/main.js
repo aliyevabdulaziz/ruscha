@@ -33,9 +33,9 @@
 // Phone number formatting
 
 // Initialize phone input with +998 prefix
-document.addEventListener('DOMContentLoaded', function () {
-	document.getElementById('phone').value = '+998 ';
-});
+// document.addEventListener('DOMContentLoaded', function () {
+// 	document.getElementById('phone').value = '+998 ';
+// });
 
 // Smooth scroll for anchor links
 
